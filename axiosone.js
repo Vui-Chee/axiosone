@@ -20,10 +20,6 @@ function Axiosone(axios, globalConfig) {
     Object.keys(module).forEach(
       function (apiName) {
         this[apiName] = function (urlParams, overrideConfig) {
-          var axiosInstance = createDefaultRequest();
-        };
-
-        this[apiName] = function (urlParams, overrideConfig) {
           var apiConfig = module[apiName].config;
           var url = module[apiName].url || module[apiName].createUrl(urlParams);
           var combinedConfig = {
