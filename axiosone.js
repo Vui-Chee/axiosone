@@ -23,7 +23,7 @@ function Axiosone(axios, globalConfig) {
         this[apiName] = function () {
           var args = Array.from(arguments);
           var apiConfig = module[apiName].config;
-          var transform = module[apiName].action;
+          var transform = module[apiName].cascadeConfigs;
           var configs = transform.apply(null, args);
 
           var combinedConfig = apiConfig;
