@@ -2,12 +2,7 @@ var axios = require("axios");
 
 var utils = require("./utils");
 
-var globalConfig = {
-  baseURL: "https://pokeapi.co/api/v2/",
-  headers: {
-    global: "test-global",
-  },
-};
+var globalConfig = {};
 
 function Axiosone(axios, globalConfig) {
   utils.extend(axios.defaults, globalConfig);
