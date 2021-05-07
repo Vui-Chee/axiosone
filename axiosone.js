@@ -1,11 +1,12 @@
 var axios = require("axios");
 
-console.log("HERE", axios.mergeConfig);
-
 var utils = require("./utils");
 
 var globalConfig = {
   baseURL: "https://pokeapi.co/api/v2/",
+  headers: {
+    global: "test-global",
+  },
 };
 
 function Axiosone(axios, globalConfig) {
@@ -19,14 +20,16 @@ function Axiosone(axios, globalConfig) {
   this.bindModule = function (module) {
     Object.keys(module).forEach(
       function (apiName) {
-        this[apiName] = function (urlParams, overrideConfig) {
+        this[apiName] = function () {
+          var args = Array.from(arguments);
           var apiConfig = module[apiName].config;
-          var url = module[apiName].url || module[apiName].createUrl(urlParams);
-          var combinedConfig = {
-            url: url,
-          };
-          utils.extend(combinedConfig, apiConfig);
-          utils.extend(combinedConfig, overrideConfig);
+          var transform = module[apiName].action;
+          var configs = transform.apply(null, args);
+
+          var combinedConfig = apiConfig;
+          configs.forEach(function (config) {
+            combinedConfig = utils.merge(combinedConfig, config);
+          });
           return this.axios.request(combinedConfig);
         };
       }.bind(this)

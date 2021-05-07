@@ -12,6 +12,15 @@ function isArray(val) {
   return toString.call(val) === "[object Array]";
 }
 
+function isPlainObject(val) {
+  if (toString.call(val) !== "[object Object]") {
+    return false;
+  }
+
+  var prototype = Object.getPrototypeOf(val);
+  return prototype === null || prototype === Object.prototype;
+}
+
 function forEach(obj, fn) {
   // Don't bother if no value provided
   if (obj === null || typeof obj === "undefined") {
@@ -50,9 +59,31 @@ function extend(a, b, thisArg) {
   return a;
 }
 
+function merge(/* obj1, obj2, obj3, ... */) {
+  var result = {};
+  function assignValue(val, key) {
+    if (isPlainObject(result[key]) && isPlainObject(val)) {
+      result[key] = merge(result[key], val);
+    } else if (isPlainObject(val)) {
+      result[key] = merge({}, val);
+    } else if (isArray(val)) {
+      result[key] = val.slice();
+    } else {
+      result[key] = val;
+    }
+  }
+
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    forEach(arguments[i], assignValue);
+  }
+  return result;
+}
+
 module.exports = {
   bind: bind,
   extend: extend,
   forEach: forEach,
   isArray: isArray,
+  isPlainObject: isPlainObject,
+  merge: merge,
 };
