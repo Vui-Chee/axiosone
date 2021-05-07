@@ -27,9 +27,14 @@ function Axiosone(axios, globalConfig) {
           var configs = transform.apply(null, args);
 
           var combinedConfig = apiConfig;
-          configs.forEach(function (config) {
-            combinedConfig = utils.merge(combinedConfig, config);
-          });
+          if (utils.isArray(configs)) {
+            configs.forEach(function (config) {
+              combinedConfig = utils.merge(combinedConfig, config);
+            });
+          } else {
+            combinedConfig = utils.merge(combinedConfig, configs);
+          }
+
           return this.axios.request(combinedConfig);
         };
       }.bind(this)
