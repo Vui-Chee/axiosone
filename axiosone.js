@@ -19,7 +19,7 @@ function Axiosone(axios, globalConfig) {
           var args = Array.from(arguments);
           var apiConfig = module[apiName].config;
           var transform = module[apiName].cascadeConfigs;
-          var configs = transform.apply(null, args);
+          var configs = transform ? transform.apply(null, args) : {};
 
           var combinedConfig = apiConfig;
           if (utils.isArray(configs)) {
