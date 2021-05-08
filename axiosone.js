@@ -18,8 +18,9 @@ function Axiosone(axios, globalConfig) {
         this[apiName] = function () {
           var args = Array.from(arguments);
           var apiConfig = module[apiName].config;
-          var transform = module[apiName].cascadeConfigs;
-          var configs = transform ? transform.apply(null, args) : {};
+          var createConfigs = module[apiName].createConfigs;
+          // createConfigs can return a list of configs or just one config object.
+          var configs = createConfigs ? createConfigs.apply(null, args) : {};
 
           var combinedConfig = apiConfig;
           if (utils.isArray(configs)) {
