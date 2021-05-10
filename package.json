@@ -1,12 +1,30 @@
 {
-  "name": "axios-one",
+  "name": "axiosone",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "server": "nodemon server.js",
+    "esc": "es-check es5 lib/*",
+    "lint": "eslint lib --ext js"
+  },
   "devDependencies": {
-    "prettier": "^2.2.1"
+    "es-check": "^5.2.3",
+    "eslint": "^7.26.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "axios": "^0.21.1"
+  },
+  "eslintConfig": {
+    "globals": {
+      "module": true,
+      "require": true
+    },
+    "root": true,
+    "extends": [
+      "eslint:recommended"
+    ]
   }
 }
