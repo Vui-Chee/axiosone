@@ -25,7 +25,7 @@ export type AxiosoneModule = Record<
  * ```
  * declare module "axiosone" {
  *   interface AxiosoneInstance {
- *     login: AxiosoneQueryFunction<typeof (queryMethod)>;
+ *     queryName: AxiosoneQueryFunction<typeof (queryMethod)>;
  *   }
  * }
  * ```
