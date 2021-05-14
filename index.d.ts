@@ -4,7 +4,7 @@ import { AxiosRequestConfig, AxiosResponse, AxiosStatic } from "axios";
  * Replaces method with string type otherwise, when assigning a string
  * causes error `cannot assign string to Method | undefined`.
  *
- * Check issue https://github.com/microsoft/TypeScript/issues/10570.
+ * Check issue https://github.com/microsoft/TypeScript/issues/11714.
  */
 export type AxiosRequestConfigOverride = Omit<AxiosRequestConfig, "method"> & {
   method?: string;
