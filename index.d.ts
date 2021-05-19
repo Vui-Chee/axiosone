@@ -13,6 +13,7 @@ export type AxiosRequestConfigOverride = Omit<AxiosRequestConfig, "method"> & {
 export type AxiosoneModule = Record<
   string,
   | AxiosRequestConfigOverride
+  | AxiosRequestConfigOverride[]
   | ((...args: any[]) => AxiosRequestConfigOverride)
   | ((...args: any[]) => AxiosRequestConfigOverride[])
 >;
