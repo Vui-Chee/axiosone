@@ -4,14 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "server": "json-server --watch sandbox/db.json",
+    "server": "json-server -p 3001 --watch sandbox/db.json",
     "esc": "es-check es5 lib/*",
     "lint": "eslint lib --ext js",
-    "test": "jasmine --config=jasmine.json"
+    "test": "jasmine --config=jasmine.json",
+    "type-check": "tsc --pretty --noEmit index.d.ts"
   },
   "devDependencies": {
     "es-check": "^5.2.3",
     "eslint": "^7.26.0",
+    "eslint-plugin-jasmine": "^4.1.2",
     "jasmine": "^3.7.0",
     "json-server": "^0.16.3",
     "prettier": "^2.2.1",
@@ -27,8 +29,14 @@
       "require": true
     },
     "root": true,
+    "env": {
+      "jasmine": true
+    },
     "extends": [
       "eslint:recommended"
+    ],
+    "plugins": [
+      "jasmine"
     ]
   }
 }
