@@ -61,20 +61,20 @@ describe("isArray", function () {
     });
   });
 
-  it("isFunction returns false for non-arrays", function () {
+  it("isArray returns false for non-arrays", function () {
     var nonArrays = excludeByType("array");
     validateType(nonArrays, utils.isArray);
   });
 });
 
 describe("isObject", function () {
-  it("isArray returns true for object", function () {
+  it("isPlainObject returns true for object", function () {
     testValues["object"].forEach(function (value) {
       expect(utils.isPlainObject(value)).toBe(true);
     });
   });
 
-  it("isFunction returns false for non-objects", function () {
+  it("isPlainObject returns false for non-objects", function () {
     var nonObjects = excludeByType("object");
     validateType(nonObjects, utils.isPlainObject);
   });
