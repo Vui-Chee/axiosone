@@ -79,3 +79,56 @@ describe("isObject", function () {
     validateType(nonObjects, utils.isPlainObject);
   });
 });
+
+describe("merge", function () {
+  it("merge with empty object", function () {
+    expect(utils.merge({}, { a: 1 })).toEqual({ a: 1 });
+    expect(utils.merge({ a: 1 }, {})).toEqual({ a: 1 });
+  });
+
+  it("merge nested objects", function () {
+    // one level merge
+    expect(utils.merge({ c: { a: 1 } }, { c: { b: 2 } })).toEqual({
+      c: { a: 1, b: 2 },
+    });
+
+    // Super deep merge
+    expect(
+      utils.merge(
+        { a: { b: { c: { d: 123 } } } },
+        { a: { b: { c: { e: 456 } } } }
+      )
+    ).toEqual({ a: { b: { c: { d: 123, e: 456 } } } });
+  });
+
+  it("override non-object values", function () {
+    expect(utils.merge({ a: 1 }, { a: 2 })).toEqual({ a: 2 });
+    expect(utils.merge({ a: [1] }, { a: [2] })).toEqual({ a: [2] });
+  });
+
+  it("merge multiple types of values all together", function () {
+    expect(
+      utils.merge(
+        { a: 1, b: { c: 123 }, d: [4] },
+        { a: 2, b: { d: 456 }, d: [5] }
+      )
+    ).toEqual({ a: 2, b: { c: 123, d: 456 }, d: [5] });
+  });
+
+  it("merge with non-object values", function () {
+    var nonObjects = excludeByType("object");
+    Object.keys(nonObjects).forEach(function (type) {
+      nonObjects[type].forEach(function (value) {
+        expect(utils.merge(value, { a: 1 })).toEqual({ a: 1 });
+      });
+    });
+  });
+
+  it("merge many objects", function () {
+    expect(utils.merge({ a: 1 }, { b: 2 }, { b: 3, c: 5 })).toEqual({
+      a: 1,
+      b: 3,
+      c: 5,
+    });
+  });
+});
