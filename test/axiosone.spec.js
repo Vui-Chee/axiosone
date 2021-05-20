@@ -17,6 +17,18 @@ var posts = [
 ];
 
 describe("axiosone", function () {
+  it("Should contain axios instance", function () {
+    expect(axiosone.axios).toBeDefined();
+  });
+
+  it("Should contain bindConfig method", function () {
+    expect(axiosone.bindConfig).toBeInstanceOf(Function);
+  });
+
+  it("Should contain extendGlobalConfig method", function () {
+    expect(axiosone.extendGlobalConfig).toBeInstanceOf(Function);
+  });
+
   it("Can extend axios default config", function () {
     var defaults = axiosone.axios.defaults;
     var headers = {
@@ -134,5 +146,21 @@ describe("axiosone", function () {
       expect(res.config.method).toEqual("post");
       expect(res.config.url).toEqual("/posts/1");
     });
+  });
+
+  it("Should bind multiple configs", function () {
+    axiosone.bindConfig({
+      getPosts: {
+        method: "get",
+        url: "/posts",
+      },
+      addPost: {
+        method: "post",
+        url: "/posts",
+        data: { text: "abcde" },
+      },
+    });
+    expect(axiosone.getPosts).toBeInstanceOf(Function);
+    expect(axiosone.addPost).toBeInstanceOf(Function);
   });
 });
