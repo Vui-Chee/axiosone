@@ -29,6 +29,11 @@ describe("axiosone", function () {
     expect(axiosone.extendGlobalConfig).toBeInstanceOf(Function);
   });
 
+  it("Should not recreate axiosone instance", function () {
+    var secondAxiosone = require("../.");
+    expect(axiosone).toEqual(secondAxiosone);
+  });
+
   it("Can extend axios default config", function () {
     var defaults = axiosone.axios.defaults;
     var headers = {
