@@ -86,7 +86,7 @@ describe("axiosone", function () {
       },
     });
     expect(axiosone.updatePost).toBeInstanceOf(Function);
-    mock.onAny("/posts/1").reply(200, {
+    mock.onPatch("/posts/1").reply(200, {
       post: Object.assign(posts[0], {
         text: expectedText,
       }),
@@ -119,7 +119,7 @@ describe("axiosone", function () {
       },
     });
     expect(axiosone.updatePost).toBeInstanceOf(Function);
-    mock.onAny("/posts/1").reply(200, {
+    mock.onPost("/posts/1").reply(200, {
       post: Object.assign(posts[0], {
         text: expectedText,
       }),
