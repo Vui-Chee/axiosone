@@ -1,18 +1,16 @@
 {
   "posts": [
     {
-      "value": "456",
+      "text": "update first post",
       "id": 1
-    }
-  ],
-  "comments": [
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "text": "second post",
+      "id": 2
+    },
+    {
+      "text": "update last post",
+      "id": 3
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
