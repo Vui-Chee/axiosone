@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "target": "es2017",
     "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["es2017", "dom", "esnext"],
+    "lib": ["es2017", "dom"],
     "module": "es6",
     "moduleResolution": "node",
     "noUnusedLocals": true,
@@ -12,6 +13,6 @@
     "noImplicitThis": true,
     "strict": true
   },
-  "include": ["index.d.ts"],
-  "exclude": ["index.js", "lib/*"]
+  "include": ["index.d.ts", "./**/*.ts"],
+  "exclude": ["node_modules", "./**/*.js"]
 }
