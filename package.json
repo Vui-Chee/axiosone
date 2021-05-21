@@ -8,7 +8,7 @@
     "es5": "es-check es5 lib/*",
     "lint": "eslint lib --ext js",
     "test": "jasmine --config=jasmine.json",
-    "type-check": "tsc --pretty --noEmit index.d.ts",
+    "type-check": "tsc --pretty --noEmit",
     "format": "prettier -w lib test sandbox index.d.ts index.js"
   },
   "devDependencies": {
