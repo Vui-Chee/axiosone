@@ -166,6 +166,10 @@ axiosone.bindConfig({
 import "./apiModule"
 ```
 
+## Credits
+
+This small package is inspired by its dependency [axios](https://github.com/axios/axios).
+
 ## License
 
 [MIT](LICENSE)
