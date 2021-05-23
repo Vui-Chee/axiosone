@@ -79,12 +79,28 @@ axiosone.bindConfig({
       method: "get",
       url: "/yoururl",
     }
-  ]
+  ],
+
+  // If inputs are present, then you can also return a of list
+  // of configs from the function.
+  examplePostQuery: function(text) {
+    return [
+      sharedConfig,
+      {
+        method: "post",
+        url: "/posts",
+        data: {
+          text: text,
+        }
+      }
+    ]
+  }
 });
 
 // axiosone will merge all your configs in order.
 // Then call your function as usual.
 axiosone.exampleQuery();
+axiosone.examplePostQuery("message");
 ```
 
 If you want all requests to use the same shared config, then call `extendGlobalConfig` method.
