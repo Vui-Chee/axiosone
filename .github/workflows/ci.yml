@@ -7,9 +7,9 @@ jobs:
   checks:
     runs-on: ubuntu-latest
 
-   strategy:
-        matrix:
-          node-version: [12, 14, 16]
+    strategy:
+      matrix:
+        node-version: [12, 14, 16]
 
     steps:
       - uses: actions/checkout@v2
