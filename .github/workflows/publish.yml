@@ -1,10 +1,6 @@
 name: publish
 
-on:
-  push:
-    branches:
-      - ci
-    types: [created]
+on: push
 
 jobs:
   publish-npm:
