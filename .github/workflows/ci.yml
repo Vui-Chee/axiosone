@@ -11,8 +11,4 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 12
-      - run: npm install
-      - run: npm run lint
-      - run: npm run type-check
-      - run: npm run es5
-      - run: npm test
+      - run: ci/checks.sh
