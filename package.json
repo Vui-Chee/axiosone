@@ -1,6 +1,6 @@
 {
   "name": "axiosone",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0",
   "description": "A simple package to consolidate all your axios request configs into callable functions",
   "main": "index.js",
   "repository": {
