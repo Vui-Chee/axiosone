@@ -28,7 +28,7 @@
     "jasmine": "^3.99.0",
     "json-server": "^0.16.3",
     "prettier": "^2.5.1",
-    "typescript": "^4.5.5"
+    "typescript": "^4.6.2"
   },
   "dependencies": {
     "axios": "^0.21.4"
